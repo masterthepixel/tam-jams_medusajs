@@ -1,5 +1,3 @@
-import { Suspense } from "react"
-
 import { listRegions } from "@lib/data/regions"
 import { listLocales } from "@lib/data/locales"
 import { getLocale } from "@lib/data/locale-actions"
@@ -18,7 +16,7 @@ export default async function Nav() {
   return (
     <div className="sticky top-0 inset-x-0 z-50">
       {/* Global nav — black bar */}
-      <div className="bg-apple-black h-11 px-6 relative flex items-center justify-between">
+      <div className="hidden bg-apple-black h-11 px-6 relative flex items-center justify-between">
         <div className="flex items-center">
           <SideMenu regions={regions} locales={locales} currentLocale={currentLocale} />
         </div>
@@ -37,19 +35,6 @@ export default async function Nav() {
           >
             Account
           </LocalizedClientLink>
-          <Suspense
-            fallback={
-              <LocalizedClientLink
-                className="text-white text-nav-link"
-                href="/cart"
-                data-testid="nav-cart-link"
-              >
-                Cart (0)
-              </LocalizedClientLink>
-            }
-          >
-            <CartButton />
-          </Suspense>
         </div>
       </div>
       {/* Sub-nav — frosted bar */}
@@ -60,17 +45,21 @@ export default async function Nav() {
         <nav className="flex items-center gap-x-6">
           <LocalizedClientLink
             href="/store"
-            className="text-button-utility text-apple-ink"
+            className="text-apple-ink text-nav-link"
           >
             Shop All
           </LocalizedClientLink>
           <LocalizedClientLink
             href="/account"
-            className="text-button-utility text-apple-ink"
+            className="text-apple-ink text-nav-link"
           >
             Account
           </LocalizedClientLink>
-          <LocalizedClientLink href="/cart" className="btn-pill">
+          <CartButton />
+          <LocalizedClientLink
+            href="/cart"
+            className="text-apple-ink text-nav-link"
+          >
             Shop
           </LocalizedClientLink>
         </nav>

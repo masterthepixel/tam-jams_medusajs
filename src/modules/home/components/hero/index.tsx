@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useMemo, useState, type TouchEvent } from "react"
+import { useEffect, useMemo, useState, type TouchEvent, type CSSProperties } from "react"
 
 const flavorCards = [
   {
@@ -68,6 +68,15 @@ const positionClassForOffset = (offset: number, length: number) => {
   return "hidden"
 }
 
+const flavorRingColors: Record<string, string> = {
+  Apple: "rgba(87, 187, 74, 0.65)",
+  Apricot: "rgba(245, 153, 69, 0.75)",
+  Blueberry: "rgba(73, 113, 234, 0.7)",
+  Raspberry: "rgba(218, 40, 103, 0.75)",
+  "Sour Cherry": "rgba(187, 29, 59, 0.8)",
+  Strawberry: "rgba(236, 79, 79, 0.75)",
+}
+
 const Hero = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isAnimating, setIsAnimating] = useState(false)
@@ -80,6 +89,7 @@ const Hero = () => {
         return {
           ...card,
           positionClass: positionClassForOffset(offset, flavorCards.length),
+          ringColor: flavorRingColors[card.name] ?? "transparent",
         }
       }),
     [currentIndex]
@@ -126,6 +136,18 @@ const Hero = () => {
 
   return (
     <section className="hero-carousel relative overflow-hidden text-white pb-20 pt-5 md:pt-6">
+      <video
+        className="hero-bg-video"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        poster="/videos/tamjamsvieo-poster.jpg"
+      >
+        <source src="/videos/tamjamsvieo-720p.webm" type="video/webm" />
+        <source src="/videos/tamjamsvieo-720p.mp4" type="video/mp4" />
+      </video>
       <h1 className="about-title">OUR JAM</h1>
 
       <div
@@ -144,7 +166,12 @@ const Hero = () => {
 
         <div className="carousel-track">
           {cards.map((card, index) => (
-            <div key={card.name} className={`card ${card.positionClass}`} data-index={index}>
+            <div
+              key={card.name}
+              className={`card ${card.positionClass}`}
+              data-index={index}
+              style={{ "--ring-color": card.ringColor } as CSSProperties}
+            >
               <img src={card.image} alt={card.alt} />
             </div>
           ))}
@@ -187,6 +214,16 @@ const Hero = () => {
           align-items: center;
           justify-content: flex-start;
           background-color: transparent;
+        }
+
+        .hero-bg-video {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          z-index: 0;
+          opacity: 0.9;
         }
 
         .about-title {
@@ -241,7 +278,7 @@ const Hero = () => {
           background: white;
           border-radius: 20px;
           overflow: hidden;
-          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 0 0 4px var(--ring-color, transparent);
           transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
           cursor: pointer;
         }
@@ -269,7 +306,7 @@ const Hero = () => {
         }
 
         .card.left-2 img {
-          filter: grayscale(100%);
+          filter: grayscale(100%) blur(2px);
         }
 
         .card.left-1 {
@@ -279,7 +316,7 @@ const Hero = () => {
         }
 
         .card.left-1 img {
-          filter: grayscale(100%);
+          filter: grayscale(100%) blur(1px);
         }
 
         .card.right-1 {
@@ -289,7 +326,7 @@ const Hero = () => {
         }
 
         .card.right-1 img {
-          filter: grayscale(100%);
+          filter: grayscale(100%) blur(1px);
         }
 
         .card.right-2 {
@@ -299,7 +336,7 @@ const Hero = () => {
         }
 
         .card.right-2 img {
-          filter: grayscale(100%);
+          filter: grayscale(100%) blur(2px);
         }
 
         .card.hidden {
@@ -310,7 +347,7 @@ const Hero = () => {
         .member-info {
           text-align: center;
           position: absolute;
-          top: 150px;
+          top: 240px;
           left: 50%;
           transform: translateX(-50%);
           width: min(280px, 100%);
@@ -324,12 +361,12 @@ const Hero = () => {
 
         .member-name {
           color: #ffffff;
-          font-size: 2rem;
+          font-size: 1.7rem;
           font-weight: 700;
           margin-bottom: 10px;
           position: relative;
           display: inline-block;
-          line-height: 1.1;
+          line-height: 1.02;
         }
 
         .member-name::before {
@@ -342,7 +379,7 @@ const Hero = () => {
 
         .member-role {
           color: #b5b7c7;
-          font-size: 1.2rem;
+          font-size: 1rem;
           font-weight: 500;
           opacity: 0.8;
           text-transform: uppercase;
@@ -350,12 +387,13 @@ const Hero = () => {
           padding: 8px 0;
           margin-top: -12px;
           position: relative;
+          line-height: 1.1;
         }
 
         .member-description {
           color: #d2d2ea;
-          font-size: 0.95rem;
-          line-height: 1.6;
+          font-size: 0.88rem;
+          line-height: 1.3;
           margin-top: 14px;
         }
 

@@ -2,262 +2,85 @@
 
 ## Summary
 
-This epic captures the work required to define, design, and build the homepage hero experience.
+This epic captures the work required to define, design, and build the homepage hero experience for Tam Jams as a flavor-first jam carousel.
 
 ## Goal
 
-Create a hero section that communicates the brand, encourages exploration, and introduces the storefront experience.
+Create an immersive homepage hero that introduces the brand, celebrates jam flavor variety, and leads visitors into the store while matching the Apple-inspired visual system.
 
 ## Scope
 
-- Hero headline and subheadline
-- Primary and secondary CTA buttons
-- Visual styling that matches the Apple-inspired design system
-- Responsive behavior for mobile and desktop
+- Hero headline and brand messaging
+- Stacked jam card carousel with rotating flavor presentation
+- Flavor overlay copy anchored in the lower third of the active card
+- Flavor-specific ring colors and progressive blur/depth styling
+- Responsive hero behavior across desktop and mobile
+- Accessible controls with swipe and keyboard navigation
 
 ## Stories
 
-- [ ] Define hero copy and messaging
-- [ ] Design hero layout and visual treatment
-- [ ] Implement hero component in the Next.js storefront
-- [ ] Validate responsive behavior across breakpoints
-- [ ] Add analytics tracking for hero CTA clicks
+- [x] Define hero copy and jam flavor messaging
+- [x] Design hero visual treatment and carousel stacking
+- [x] Implement hero component in the Next.js storefront
+- [ ] Sign off responsive spacing and mobile behavior
+- [ ] Validate accessibility for keyboard and screen reader users
+- [ ] Add homepage metadata and SEO checks for the hero
 
 ## Notes
 
-This epic is intentionally independent of Medusa product data; it is a static marketing-driven hero section that should lead into the store experience.
+This epic is focused on the jam story, not a team profile. The hero currently renders:
+
+- a large `OUR JAM` title
+- a rounded stacked carousel with one active center card and two visible side cards
+- a lower-third overlay for flavor name, label, and description
+- flavor-specific color rings around each card
+- increasing blur and grayscale for cards further back in the stack
+
+At any time, one flavor is active in the center and one flavor is hidden behind the deck. The active center card changes with carousel navigation.
 
 ## SEO considerations
 
-- **Semantic structure**: Use a meaningful heading for the hero section and make sure the heading copy reflects jam flavors, quality, and heritage.
-- **Meta data**: Ensure `metadata.title` and `metadata.description` on the homepage mention the brand and the jam flavor experience.
-- **Image SEO**: Add descriptive `alt` text for each carousel card image, e.g. `Apple jam jar with fruit label`, not generic profile alt text.
-- **Content relevance**: Keep the carousel content focused on jam flavors, taste, and product benefits instead of team/profile language.
-- **Performance**: Optimize hero images and lazy-load non-critical images when possible to preserve page speed.
-- **Accessibility**: Make carousel controls keyboard-friendly and screen-reader friendly, since accessibility supports SEO indirectly.
-- **Social/Open Graph**: If OG metadata is added, reflect the flavor story and brand in the preview text and image.
-- **URL/canonical consistency**: Keep homepage metadata consistent across localized routes and use canonical tags if needed.
+- **Semantic structure**: Use a clear hero heading and ensure the hero content reflects the jam flavor story.
+- **Meta data**: Confirm homepage metadata mentions Tam Jams, flavor variety, and the jam experience.
+- **Image SEO**: Use descriptive `alt` text for each flavor image, e.g. `Apple jam jar with fresh apples`.
+- **Content relevance**: Keep hero content focused on jams, taste notes, and brand quality.
+- **Performance**: Optimize hero images, keep the carousel lightweight, and avoid unnecessary script bloat.
+- **Accessibility**: Ensure carousel controls are keyboard focusable and that any status updates are screen-reader friendly.
+- **Social/Open Graph**: If the homepage has OG metadata, reflect jam flavor storytelling in preview text and imagery.
+- **Localization**: Keep localized homepage metadata consistent across `/us`, `/ca`, and other routes.
 
+## Current hero structure
 
-<h1 class="about-title">OUR TEAM</h1>
+```html
+<section class="hero-carousel">
+  <h1 class="about-title">OUR JAM</h1>
+  <div class="carousel-container">
+    <button class="nav-arrow left">‹</button>
+    <div class="carousel-track">
+      <!-- center, left-1, left-2, right-1, right-2, hidden cards -->
+    </div>
+    <button class="nav-arrow right">›</button>
+  </div>
+  <div class="member-info">
+    <h2 class="member-name">Apple Jam</h2>
+    <p class="member-role">Orchard Classic</p>
+    <p class="member-description">Bright apple jam with a crisp, home-kitchen sweetness that pairs perfectly with toast and cheese.</p>
+  </div>
+  <div class="dots">
+    <!-- flavor indicator dots -->
+  </div>
+</section>
+```
 
-<div class="carousel-container">
-	<button class="nav-arrow left">‹</button>
-	<div class="carousel-track">
-		<div class="card" data-index="0">
-			<img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=3687&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Team Member 1">
-		</div>
-		<div class="card" data-index="1">
-			<img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Team Member 2">
-		</div>
-		<div class="card" data-index="2">
-			<img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZmVzc2lvbmFsJTIwcGVvcGxlfGVufDB8fDB8fHww" alt="Team Member 3">
-		</div>
-		<div class="card" data-index="3">
-			<img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8cHJvZmVzc2lvbmFsJTIwcGVvcGxlfGVufDB8fDB8fHww" alt="Team Member 4">
-		</div>
-		<div class="card" data-index="4">
-			<img src="https://images.unsplash.com/photo-1655249481446-25d575f1c054?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjh8fHByb2Zlc3Npb25hbCUyMHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D" alt="Team Member 5">
-		</div>
-		<div class="card" data-index="5">
-			<img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=3687&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Team Member 6">
-		</div>
-	</div>
-	<button class="nav-arrow right">›</button>
-</div>
+## Current implementation details
 
-<div class="member-info">
-	<h2 class="member-name">David Kim</h2>
-	<p class="member-role">Founder</p>
-</div>
-
-<div class="dots">
-	<div class="dot active" data-index="0"></div>
-	<div class="dot" data-index="1"></div>
-	<div class="dot" data-index="2"></div>
-	<div class="dot" data-index="3"></div>
-	<div class="dot" data-index="4"></div>
-	<div class="dot" data-index="5"></div>
-</div>
-
-<div style="display: flex; justify-content: flex-end;width:100%;padding-right:10px;">
-	<script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="nidaltahir" data-color="#FFDD00" data-emoji="☕" data-font="Poppins" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff"></script>
-</div>
-
-
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-}
-
-body {
-	min-height: 100vh;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	background-color: #f5f5f5;
-	overflow: hidden;
-}
-
-.about-title {
-	font-size: 7.5rem;
-	font-weight: 900;
-	text-transform: uppercase;
-	letter-spacing: -0.02em;
-	position: absolute;
-	top: 45px;
-	left: 50%;
-	transform: translateX(-50%);
-	pointer-events: none;
-	white-space: nowrap;
-	font-family: "Arial Black", "Arial Bold", Arial, sans-serif;
-	background: linear-gradient(
-		to bottom,
-		rgb(8 42 123 / 35%) 30%,
-		rgb(255 255 255 / 0%) 76%
-	);
-	-webkit-background-clip: text;
-	background-clip: text;
-	color: transparent;
-}
-
-.carousel-container {
-	width: 100%;
-	max-width: 1200px;
-	height: 450px;
-	position: relative;
-	perspective: 1000px;
-	margin-top: 80px;
-}
-
-.carousel-track {
-	width: 100%;
-	height: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	position: relative;
-	transform-style: preserve-3d;
-	transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.card {
-	position: absolute;
-	width: 280px;
-	height: 380px;
-	background: white;
-	border-radius: 20px;
-	overflow: hidden;
-	box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-	transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-	cursor: pointer;
-}
-
-.card img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.card.center {
-	z-index: 10;
-	transform: scale(1.1) translateZ(0);
-}
-
-.card.center img {
-	filter: none;
-}
-
-.card.left-2 {
-	z-index: 1;
-	transform: translateX(-400px) scale(0.8) translateZ(-300px);
-	opacity: 0.7;
-}
-
-.card.left-2 img {
-	filter: grayscale(100%);
-}
-
-.card.left-1 {
-	z-index: 5;
-	transform: translateX(-200px) scale(0.9) translateZ(-100px);
-	opacity: 0.9;
-}
-
-.card.left-1 img {
-	filter: grayscale(100%);
-}
-
-.card.right-1 {
-	z-index: 5;
-	transform: translateX(200px) scale(0.9) translateZ(-100px);
-	opacity: 0.9;
-}
-
-.card.right-1 img {
-	filter: grayscale(100%);
-}
-
-.card.right-2 {
-	z-index: 1;
-	transform: translateX(400px) scale(0.8) translateZ(-300px);
-	opacity: 0.7;
-}
-
-.card.right-2 img {
-	filter: grayscale(100%);
-}
-
-.card.hidden {
-	opacity: 0;
-	pointer-events: none;
-}
-
-.member-info {
-	text-align: center;
-	margin-top: 40px;
-	transition: all 0.5s ease-out;
-}
-
-.member-name {
-	color: rgb(8, 42, 123);
-	font-size: 2.5rem;
-	font-weight: 700;
-	margin-bottom: 10px;
-	position: relative;
-	display: inline-block;
-}
-
-.member-name::before,
-.member-name::after {
-	content: "";
-	position: absolute;
-	top: 100%;
-	width: 100px;
-	height: 2px;
-	background: rgb(8, 42, 123);
-}
-
-.member-name::before {
-	left: -120px;
-}
-
-.member-name::after {
-	right: -120px;
-}
-
-.member-role {
-	color: #848696;
-	font-size: 1.5rem;
-	font-weight: 500;
-	opacity: 0.8;
-	text-transform: uppercase;
-	letter-spacing: 0.1em;
-	padding: 10px 0;
+- The hero is implemented in `src/modules/home/components/hero/index.tsx`
+- Flavor cards are stored in `flavorCards`
+- Flavor-specific ring colors are applied as a custom CSS variable
+- The active card is centered, side cards appear with reduced scale
+- Back cards are blurred and desaturated to emphasize depth
+- The overlay text has been moved to the lower third of the hero card
+- The top black nav bar is currently hidden while the white sub-nav remains visible
 	margin-top: -15px;
 	position: relative;
 }
