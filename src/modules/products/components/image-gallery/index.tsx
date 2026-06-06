@@ -3,14 +3,16 @@ import { Container } from "@medusajs/ui"
 import Image from "next/image"
 
 type ImageGalleryProps = {
-  images: HttpTypes.StoreProductImage[]
+  images?: HttpTypes.StoreProductImage[] | null
 }
 
 const ImageGallery = ({ images }: ImageGalleryProps) => {
+  const galleryImages = images ?? []
+
   return (
     <div className="flex items-start relative">
       <div className="flex flex-col flex-1 small:mx-16 gap-y-4">
-        {images.map((image, index) => {
+        {galleryImages.map((image, index) => {
           return (
             <Container
               key={image.id}
