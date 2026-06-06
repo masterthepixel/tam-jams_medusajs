@@ -238,11 +238,11 @@ const Payment = ({
             </div>
           ) : paidByGiftcard ? (
             <div className="flex flex-col w-1/3">
-              <Text className="txt-medium-plus text-ui-fg-base mb-1">
+              <Text className="text-body-strong text-apple-ink mb-1">
                 Payment method
               </Text>
               <Text
-                className="txt-medium text-ui-fg-subtle"
+                className="text-body-apple text-apple-ink48"
                 data-testid="payment-method-summary"
               >
                 Gift card

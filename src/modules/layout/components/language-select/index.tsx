@@ -127,10 +127,10 @@ const LanguageSelect = ({
         disabled={isPending}
       >
         <ListboxButton className="py-1 w-full">
-          <div className="txt-compact-small flex items-start gap-x-2">
+          <div className="text-caption-apple text-apple-ink flex items-start gap-x-2">
             <span>Language:</span>
             {current && (
-              <span className="txt-compact-small flex items-center gap-x-2">
+              <span className="text-caption-apple text-apple-ink flex items-center gap-x-2">
                 {current.countryCode && (
                   /* @ts-ignore */
                   <ReactCountryFlag
@@ -156,7 +156,7 @@ const LanguageSelect = ({
             leaveTo="opacity-0"
           >
             <ListboxOptions
-              className="absolute -bottom-[calc(100%-36px)] left-0 xsmall:left-auto xsmall:right-0 max-h-[442px] overflow-y-scroll z-[900] bg-white drop-shadow-md text-small-regular uppercase text-black no-scrollbar rounded-rounded w-full"
+              className="absolute -bottom-[calc(100%-36px)] left-0 xsmall:left-auto xsmall:right-0 max-h-[442px] overflow-y-scroll z-[900] bg-apple-canvas border border-apple-hairline text-caption-apple uppercase text-apple-ink no-scrollbar rounded-lg w-full"
               static
             >
               {options.map((o) => (

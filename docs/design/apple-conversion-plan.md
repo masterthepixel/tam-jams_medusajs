@@ -1,5 +1,7 @@
 # Apple Design Conversion Plan — tam-jams_medusajs
 
+> Current status: this plan is active for the Phase 2 Apple design conversion audit in the `tam-jams_medusajs` storefront. See `docs/design/apple-conversion-phase-2-summary.md` for the latest progress, status, and local dev notes.
+>
 > **Design source of truth:** [`apple-design.md`](./apple-design.md) (the corrected local Apple spec).
 > **Target repo:** Medusa Next.js Starter storefront (`src/app`, `src/modules`).
 > **Goal:** Re-skin every UI element to the Apple design language (single Action Blue accent, SF Pro type ladder, edge-to-edge tiles, one product shadow, pill CTAs) **without** changing data-fetching, routing, or business logic.

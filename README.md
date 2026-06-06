@@ -18,6 +18,10 @@
 Combine Medusa's modules for your commerce backend with the newest Next.js 15 features for a performant storefront.</p>
 
 <p align="center">
+This fork is the `tam-jams_medusajs` storefront with an Apple design system conversion audit in progress. See `docs/design/` for the current plan, audit summary, and Apple UI token work.
+</p>
+
+<p align="center">
   <a href="https://github.com/medusajs/medusa/blob/master/CONTRIBUTING.md">
     <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat" alt="PRs welcome!" />
   </a>
@@ -97,6 +101,21 @@ yarn dev
 ### Open the code and start customizing
 
 Your site is now running at http://localhost:8000!
+
+## Design documentation
+
+- `docs/design/apple-design.md` — Apple UI spec reference.
+- `docs/design/apple-conversion-plan.md` — Apple conversion plan and stream ownership.
+- `docs/design/apple-conversion-phase-2-summary.md` — current Phase 2 completion summary and audit notes.
+
+## Local development notes
+
+- This repo is currently validated with Next.js 15.3.9 and Node 25.
+- If you see `localStorage.getItem is not a function` in dev, start the app with:
+
+```bash
+NODE_OPTIONS='--localstorage-file=/tmp/next-localstorage' yarn dev
+```
 
 # Payment integrations
 

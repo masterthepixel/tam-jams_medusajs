@@ -1,7 +1,11 @@
 # Apple Design Conversion Phase 2 Summary
 
 ## Overview
+Last updated: 2026-06-06
+
 This document summarizes the Phase 2 completion work for the Apple design system conversion in `tam-jams_medusajs`.
+
+This repo is currently undergoing a targeted Apple UI audit and cleanup. The following audit work was completed and verified in the current branch.
 
 ## Completed work
 - Completed the Apple design conversion audit and cleanup across partially converted streams.
@@ -59,3 +63,8 @@ This document summarizes the Phase 2 completion work for the Apple design system
 ## Notes
 - The documentation summary is saved at `docs/design/apple-conversion-phase-2-summary.md`.
 - Local dev issue workaround: in Node 25, start dev with `NODE_OPTIONS='--localstorage-file=/tmp/next-localstorage' yarn dev` to avoid a Next.js dev-only `localStorage.getItem is not a function` error.
+- A clean local dev restart on port `8000` has been validated after removing stale `.next` build output and killing prior dev processes.
+
+## Recommended next steps
+- Continue the Apple design conversion on the remaining token cleanup work in `src/modules`.
+- Keep the current `docs/design/` plan and summary in sync as the conversion progresses.

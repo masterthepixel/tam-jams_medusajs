@@ -21,20 +21,6 @@ module.exports = {
         padding: "padding-top padding-right padding-bottom padding-left",
       },
       colors: {
-        // Legacy palette — kept as aliases during migration. Remove in Phase 2.
-        grey: {
-          0: "#FFFFFF",
-          5: "#F9FAFB",
-          10: "#F3F4F6",
-          20: "#E5E7EB",
-          30: "#D1D5DB",
-          40: "#9CA3AF",
-          50: "#6B7280",
-          60: "#4B5563",
-          70: "#374151",
-          80: "#1F2937",
-          90: "#111827",
-        },
         // Apple design tokens — canonical interactive/surface palette.
         // See docs/design/apple-design.md. Single accent: apple.blue.
         apple: {
@@ -67,12 +53,6 @@ module.exports = {
         lg: "18px",
         pill: "9999px",
         full: "9999px",
-        // Legacy aliases — kept so unconverted components compile. Remove in Phase 2.
-        soft: "2px",
-        base: "4px",
-        rounded: "8px",
-        large: "16px",
-        circle: "9999px",
       },
       boxShadow: {
         // The ONLY custom shadow in the system — product imagery resting on a surface.

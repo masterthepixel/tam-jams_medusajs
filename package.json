@@ -8,7 +8,8 @@
     "medusa-storefront"
   ],
   "scripts": {
-    "dev": "next dev --turbopack -p 8000",
+    "dev": "concurrently \"next dev --turbopack -p 8000\" \"npm -C ../tam-jams-backend run dev\"",
+    "dev:frontend-only": "next dev --turbopack -p 8000",
     "build": "next build",
     "start": "next start -p 8000",
     "lint": "next lint",
@@ -46,6 +47,7 @@
     "ansi-colors": "^4.1.3",
     "autoprefixer": "^10.4.2",
     "babel-loader": "^8.2.3",
+    "concurrently": "^9.0.0",
     "eslint": "8.10.0",
     "eslint-config-next": "15.0.8",
     "postcss": "^8.4.8",
