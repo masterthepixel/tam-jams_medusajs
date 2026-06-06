@@ -47,12 +47,12 @@ export default async function RelatedProducts({
   }
 
   return (
-    <div className="product-page-constraint">
+    <div className="product-page-constraint tile tile--parchment">
       <div className="flex flex-col items-center text-center mb-16">
-        <span className="text-base-regular text-gray-600 mb-6">
+        <span className="font-display text-display-lg font-semibold text-apple-ink tracking-tight mb-8">
           Related products
         </span>
-        <p className="text-2xl-regular text-ui-fg-base max-w-lg">
+        <p className="text-body-apple text-apple-ink max-w-lg">
           You might also want to check out these products.
         </p>
       </div>

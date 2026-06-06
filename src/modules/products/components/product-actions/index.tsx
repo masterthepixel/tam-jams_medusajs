@@ -171,8 +171,7 @@ export default function ProductActions({
             isAdding ||
             !isValidVariant
           }
-          variant="primary"
-          className="w-full h-10"
+          className="btn-pill w-full"
           isLoading={isAdding}
           data-testid="add-product-button"
         >
