@@ -8,8 +8,8 @@
     "medusa-storefront"
   ],
   "scripts": {
-    "dev": "concurrently \"next dev --turbopack -p 8000\" \"npm -C ../tam-jams-backend run dev\"",
-    "dev:frontend-only": "next dev --turbopack -p 8000",
+    "dev": "NODE_OPTIONS='--localstorage-file=/tmp/next-localstorage' concurrently \"next dev --turbopack -p 8000\" \"npm -C ../tam-jams-backend run dev\"",
+    "dev:frontend-only": "NODE_OPTIONS='--localstorage-file=/tmp/next-localstorage' next dev --turbopack -p 8000",
     "build": "next build",
     "start": "next start -p 8000",
     "lint": "next lint",
