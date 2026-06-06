@@ -1,15 +1,24 @@
-const PayPal = () => {
+import React from "react"
+
+import { IconProps } from "types/icon"
+
+const PayPal: React.FC<IconProps> = ({
+  size = "20",
+  color = "currentColor",
+  ...attributes
+}) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      height="20"
-      width="20"
+      height={size}
+      width={size}
       viewBox="0 0 26 25"
       id="paypalIcon"
+      {...attributes}
     >
       <path
         fill="none"
-        stroke="#303c42"
+        stroke={color}
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -17,7 +26,7 @@ const PayPal = () => {
       ></path>
       <path
         fill="none"
-        stroke="#303c42"
+        stroke={color}
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
