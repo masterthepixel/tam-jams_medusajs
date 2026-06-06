@@ -1,4 +1,3 @@
-import { Button } from "@medusajs/ui"
 import { useMemo } from "react"
 
 import Thumbnail from "@modules/products/components/thumbnail"
@@ -24,21 +23,21 @@ const OrderCard = ({ order }: OrderCardProps) => {
   }, [order])
 
   return (
-    <div className="bg-white flex flex-col" data-testid="order-card">
-      <div className="uppercase text-large-semi mb-1">
+    <div className="bg-apple-canvas border border-apple-hairline rounded-lg p-6 flex flex-col" data-testid="order-card">
+      <div className="font-display text-tagline font-bold text-apple-ink mb-1">
         #<span data-testid="order-display-id">{order.display_id}</span>
       </div>
-      <div className="flex items-center divide-x divide-gray-200 text-small-regular text-ui-fg-base">
-        <span className="pr-2" data-testid="order-created-at">
+      <div className="flex items-center gap-x-4 text-body-apple text-apple-ink">
+        <span className="" data-testid="order-created-at">
           {new Date(order.created_at).toDateString()}
         </span>
-        <span className="px-2" data-testid="order-amount">
+        <span className="" data-testid="order-amount">
           {convertToLocale({
             amount: order.total,
             currency_code: order.currency_code,
           })}
         </span>
-        <span className="pl-2">{`${numberOfLines} ${
+        <span className="">{`${numberOfLines} ${
           numberOfLines > 1 ? "items" : "item"
         }`}</span>
       </div>
@@ -51,9 +50,9 @@ const OrderCard = ({ order }: OrderCardProps) => {
               data-testid="order-item"
             >
               <Thumbnail thumbnail={i.thumbnail} images={[]} size="full" />
-              <div className="flex items-center text-small-regular text-ui-fg-base">
+              <div className="flex items-center text-body-apple text-apple-ink">
                 <span
-                  className="text-ui-fg-base font-semibold"
+                  className="text-body-strong text-apple-ink"
                   data-testid="item-title"
                 >
                   {i.title}
@@ -66,18 +65,20 @@ const OrderCard = ({ order }: OrderCardProps) => {
         })}
         {numberOfProducts > 4 && (
           <div className="w-full h-full flex flex-col items-center justify-center">
-            <span className="text-small-regular text-ui-fg-base">
+            <span className="text-body-apple text-apple-ink">
               + {numberOfLines - 4}
             </span>
-            <span className="text-small-regular text-ui-fg-base">more</span>
+            <span className="text-body-apple text-apple-ink">more</span>
           </div>
         )}
       </div>
       <div className="flex justify-end">
-        <LocalizedClientLink href={`/account/orders/details/${order.id}`}>
-          <Button data-testid="order-details-link" variant="secondary">
-            See details
-          </Button>
+        <LocalizedClientLink
+          href={`/account/orders/details/${order.id}`}
+          className="text-apple-blue text-body-apple"
+          data-testid="order-details-link"
+        >
+          See details
         </LocalizedClientLink>
       </div>
     </div>

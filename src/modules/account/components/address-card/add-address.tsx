@@ -1,7 +1,7 @@
 "use client"
 
 import { Plus } from "@medusajs/icons"
-import { Button, Heading } from "@medusajs/ui"
+import { Heading } from "@medusajs/ui"
 import { useEffect, useState, useActionState } from "react"
 
 import useToggleState from "@lib/hooks/use-toggle-state"
@@ -49,11 +49,11 @@ const AddAddress = ({
   return (
     <>
       <button
-        className="border border-ui-border-base rounded-rounded p-5 min-h-[220px] h-full w-full flex flex-col justify-between"
+        className="bg-apple-canvas border border-apple-hairline rounded-lg p-6 min-h-[220px] h-full w-full flex flex-col justify-between"
         onClick={open}
         data-testid="add-address-button"
       >
-        <span className="text-base-semi">New address</span>
+        <span className="text-body-strong text-apple-ink">New address</span>
         <Plus />
       </button>
 
@@ -137,7 +137,7 @@ const AddAddress = ({
             </div>
             {formState.error && (
               <div
-                className="text-rose-500 text-small-regular py-2"
+                className="text-caption-apple text-rose-500 py-2"
                 data-testid="address-error"
               >
                 {formState.error}
@@ -146,16 +146,15 @@ const AddAddress = ({
           </Modal.Body>
           <Modal.Footer>
             <div className="flex gap-3 mt-6">
-              <Button
+              <button
                 type="reset"
-                variant="secondary"
                 onClick={close}
-                className="h-10"
+                className="btn-pill-ghost px-5 py-2"
                 data-testid="cancel-button"
               >
                 Cancel
-              </Button>
-              <SubmitButton data-testid="save-button">Save</SubmitButton>
+              </button>
+              <SubmitButton className="btn-pill" data-testid="save-button">Save</SubmitButton>
             </div>
           </Modal.Footer>
         </form>

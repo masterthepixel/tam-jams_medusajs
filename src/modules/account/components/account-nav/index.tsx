@@ -30,7 +30,7 @@ const AccountNav = ({
         {route !== `/${countryCode}/account` ? (
           <LocalizedClientLink
             href="/account"
-            className="flex items-center gap-x-2 text-small-regular py-2"
+            className="flex items-center gap-x-2 text-body-apple text-apple-ink py-2"
             data-testid="account-main-link"
           >
             <>
@@ -40,15 +40,15 @@ const AccountNav = ({
           </LocalizedClientLink>
         ) : (
           <>
-            <div className="text-xl-semi mb-4 px-8">
+            <div className="font-display text-display-md font-semibold text-apple-ink mb-4 px-8">
               Hello {customer?.first_name}
             </div>
-            <div className="text-base-regular">
+            <div>
               <ul>
                 <li>
                   <LocalizedClientLink
                     href="/account/profile"
-                    className="flex items-center justify-between py-4 border-b border-gray-200 px-8"
+                    className="flex items-center justify-between py-4 border-b border-apple-hairline px-8"
                     data-testid="profile-link"
                   >
                     <>
@@ -63,7 +63,7 @@ const AccountNav = ({
                 <li>
                   <LocalizedClientLink
                     href="/account/addresses"
-                    className="flex items-center justify-between py-4 border-b border-gray-200 px-8"
+                    className="flex items-center justify-between py-4 border-b border-apple-hairline px-8"
                     data-testid="addresses-link"
                   >
                     <>
@@ -78,7 +78,7 @@ const AccountNav = ({
                 <li>
                   <LocalizedClientLink
                     href="/account/orders"
-                    className="flex items-center justify-between py-4 border-b border-gray-200 px-8"
+                    className="flex items-center justify-between py-4 border-b border-apple-hairline px-8"
                     data-testid="orders-link"
                   >
                     <div className="flex items-center gap-x-2">
@@ -91,7 +91,7 @@ const AccountNav = ({
                 <li>
                   <button
                     type="button"
-                    className="flex items-center justify-between py-4 border-b border-gray-200 px-8 w-full"
+                    className="flex items-center justify-between py-4 border-b border-apple-hairline px-8 w-full"
                     onClick={handleLogout}
                     data-testid="logout-button"
                   >
@@ -107,12 +107,12 @@ const AccountNav = ({
           </>
         )}
       </div>
-      <div className="hidden small:block" data-testid="account-nav">
-        <div>
+      <div className="hidden small:block bg-apple-parchment border-r border-apple-hairline" data-testid="account-nav">
+        <div className="px-4 py-6">
           <div className="pb-4">
-            <h3 className="text-base-semi">Account</h3>
+            <h3 className="text-caption-strong font-semibold text-apple-ink uppercase tracking-wide mb-2">Account</h3>
           </div>
-          <div className="text-base-regular">
+          <div>
             <ul className="flex mb-0 justify-start items-start flex-col gap-y-4">
               <li>
                 <AccountNavLink
@@ -150,11 +150,12 @@ const AccountNav = ({
                   Orders
                 </AccountNavLink>
               </li>
-              <li className="text-grey-700">
+              <li>
                 <button
                   type="button"
                   onClick={handleLogout}
                   data-testid="logout-button"
+                  className="text-body-apple text-apple-ink80 block py-2 px-4"
                 >
                   Log out
                 </button>
@@ -186,8 +187,8 @@ const AccountNavLink = ({
   return (
     <LocalizedClientLink
       href={href}
-      className={clx("text-ui-fg-subtle hover:text-ui-fg-base", {
-        "text-ui-fg-base font-semibold": active,
+      className={clx("text-body-apple text-apple-ink80 block py-2 px-4", {
+        "text-apple-blue font-semibold border-l-2 border-apple-blue bg-apple-canvas": active,
       })}
       data-testid={dataTestId}
     >

@@ -1,5 +1,5 @@
 import { Disclosure } from "@headlessui/react"
-import { Badge, Button, clx } from "@medusajs/ui"
+import { Badge, clx } from "@medusajs/ui"
 import { useEffect } from "react"
 
 import useToggleState from "@lib/hooks/use-toggle-state"
@@ -42,10 +42,10 @@ const AccountInfo = ({
   }, [isSuccess, close])
 
   return (
-    <div className="text-small-regular" data-testid={dataTestid}>
+    <div className="bg-apple-canvas border border-apple-hairline rounded-lg p-6 mb-4" data-testid={dataTestid}>
       <div className="flex items-end justify-between">
         <div className="flex flex-col">
-          <span className="uppercase text-ui-fg-base">{label}</span>
+          <span className="text-caption-apple text-apple-ink48">{label}</span>
           <div className="flex items-center flex-1 basis-0 justify-end gap-x-4">
             {typeof currentInfo === "string" ? (
               <span className="font-semibold" data-testid="current-info">{currentInfo}</span>
@@ -55,16 +55,15 @@ const AccountInfo = ({
           </div>
         </div>
         <div>
-          <Button
-            variant="secondary"
-            className="w-[100px] min-h-[25px] py-1"
+          <button
+            className={clx(state ? "btn-pill-ghost" : "btn-pill", "px-5 py-1.5 text-sm")}
             onClick={handleToggle}
             type={state ? "reset" : "button"}
             data-testid="edit-button"
             data-active={state}
           >
             {state ? "Cancel" : "Edit"}
-          </Button>
+          </button>
         </div>
       </div>
 
@@ -120,14 +119,14 @@ const AccountInfo = ({
           <div className="flex flex-col gap-y-2 py-4">
             <div>{children}</div>
             <div className="flex items-center justify-end mt-2">
-              <Button
-                isLoading={pending}
-                className="w-full small:max-w-[140px]"
+              <button
+                disabled={pending}
+                className="btn-pill w-full small:max-w-[140px]"
                 type="submit"
                 data-testid="save-button"
               >
-                Save changes
-              </Button>
+                {pending ? "Saving…" : "Save changes"}
+              </button>
             </div>
           </div>
         </Disclosure.Panel>

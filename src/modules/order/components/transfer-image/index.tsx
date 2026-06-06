@@ -1,6 +1,7 @@
 import { SVGProps } from "react"
 
 const TransferImage = (props: SVGProps<SVGSVGElement>) => (
+  <div className="bg-apple-parchment rounded-lg inline-flex items-center justify-center p-4">
   <svg
     width="280"
     height="181"
@@ -270,6 +271,7 @@ const TransferImage = (props: SVGProps<SVGSVGElement>) => (
       </clipPath>
     </defs>
   </svg>
+  </div>
 )
 
 export default TransferImage

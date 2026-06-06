@@ -1,7 +1,7 @@
 "use client"
 
 import { acceptTransferRequest, declineTransferRequest } from "@lib/data/orders"
-import { Button, Text } from "@medusajs/ui"
+import { Text } from "@medusajs/ui"
 import { useState } from "react"
 
 type TransferStatus = "pending" | "success" | "error"
@@ -50,27 +50,24 @@ const TransferActions = ({ id, token }: { id: string; token: string }) => {
       )}
       {status?.accept !== "success" && status?.decline !== "success" && (
         <div className="flex gap-x-4">
-          <Button
-            size="large"
+          <button
+            className="btn-pill"
             onClick={acceptTransfer}
-            isLoading={status?.accept === "pending"}
             disabled={
               status?.accept === "pending" || status?.decline === "pending"
             }
           >
-            Accept transfer
-          </Button>
-          <Button
-            size="large"
-            variant="secondary"
+            {status?.accept === "pending" ? "Accepting…" : "Accept transfer"}
+          </button>
+          <button
+            className="btn-pill-ghost"
             onClick={declineTransfer}
-            isLoading={status?.decline === "pending"}
             disabled={
               status?.accept === "pending" || status?.decline === "pending"
             }
           >
-            Decline transfer
-          </Button>
+            {status?.decline === "pending" ? "Declining…" : "Decline transfer"}
+          </button>
         </div>
       )}
       {errorMessage && <Text className="text-red-500">{errorMessage}</Text>}
