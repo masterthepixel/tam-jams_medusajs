@@ -2,6 +2,39 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+@layer base {
+  /* =====================================================================
+   * APPLE ACCENT OVERRIDE (Phase 0 / Stream F frozen contract)
+   * Remap the @medusajs/ui-preset interactive CSS variables to Apple
+   * Action Blue so EVERY Medusa primitive (Button, Checkbox, Radio,
+   * Input focus, Select) inherits the single accent automatically.
+   * Light = #0071e3 (Action Blue). Dark = #2997ff (Sky Link Blue).
+   * Source: docs/design/apple-design.md
+   * ===================================================================== */
+  :root {
+    --fg-interactive: rgba(0, 113, 227, 1);
+    --fg-interactive-hover: rgba(0, 102, 204, 1);
+    --bg-interactive: rgba(0, 113, 227, 1);
+    --border-interactive: rgba(0, 113, 227, 1);
+    --borders-interactive-with-active: 0px 0px 0px 1px rgba(0, 113, 227, 1);
+    --borders-interactive-with-focus: 0px 0px 0px 1px rgba(0, 113, 227, 1),
+      0px 0px 0px 3px rgba(0, 113, 227, 0.4);
+    --borders-interactive-with-shadow: 0px 0px 0px 1px rgba(0, 113, 227, 1);
+    --details-contrast-on-bg-interactive: 0px 1px 2px 0px rgba(0, 0, 0, 0.2);
+  }
+
+  .dark {
+    --fg-interactive: rgba(41, 151, 255, 1);
+    --fg-interactive-hover: rgba(41, 151, 255, 1);
+    --bg-interactive: rgba(41, 151, 255, 1);
+    --border-interactive: rgba(41, 151, 255, 1);
+    --borders-interactive-with-active: 0px 0px 0px 1px rgba(41, 151, 255, 1);
+    --borders-interactive-with-focus: 0px 0px 0px 1px rgba(41, 151, 255, 1),
+      0px 0px 0px 3px rgba(41, 151, 255, 0.4);
+    --borders-interactive-with-shadow: 0px 0px 0px 1px rgba(41, 151, 255, 1);
+  }
+}
+
 @layer utilities {
   /* Chrome, Safari and Opera */
   .no-scrollbar::-webkit-scrollbar {
