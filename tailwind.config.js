@@ -21,6 +21,7 @@ module.exports = {
         padding: "padding-top padding-right padding-bottom padding-left",
       },
       colors: {
+        // Legacy palette — kept as aliases during migration. Remove in Phase 2.
         grey: {
           0: "#FFFFFF",
           5: "#F9FAFB",
@@ -34,17 +35,57 @@ module.exports = {
           80: "#1F2937",
           90: "#111827",
         },
+        // Apple design tokens — canonical interactive/surface palette.
+        // See docs/design/apple-design.md. Single accent: apple.blue.
+        apple: {
+          blue: "#0071e3", // primary — every interactive element
+          bluePress: "#0066cc", // pressed/active tint
+          blueOnDark: "#2997ff", // links + focus ring on dark tiles
+          ink: "#1d1d1f", // headlines + body on light
+          ink80: "#333333", // body on pearl surfaces
+          ink48: "#7a7a7a", // legal/disabled — AA-large/decorative only
+          onDark: "#ffffff", // text on dark tiles
+          bodyMuted: "#cccccc", // secondary copy on dark tiles
+          canvas: "#ffffff",
+          parchment: "#f5f5f7",
+          pearl: "#fafafc",
+          tile1: "#272729",
+          tile2: "#2a2a2c",
+          tile3: "#252527",
+          black: "#000000",
+          hairline: "#e0e0e0",
+          divider: "#f0f0f0",
+          chip: "#d2d2d7", // translucent control chip base (apply ~64% alpha)
+        },
       },
       borderRadius: {
+        // Apple radius scale (canonical).
         none: "0px",
+        xs: "5px",
+        sm: "8px",
+        md: "11px",
+        lg: "18px",
+        pill: "9999px",
+        full: "9999px",
+        // Legacy aliases — kept so unconverted components compile. Remove in Phase 2.
         soft: "2px",
         base: "4px",
         rounded: "8px",
         large: "16px",
         circle: "9999px",
       },
+      boxShadow: {
+        // The ONLY custom shadow in the system — product imagery resting on a surface.
+        product: "0 5px 30px 3px rgba(0, 0, 0, 0.22)",
+      },
       maxWidth: {
         "8xl": "100rem",
+      },
+      spacing: {
+        // Apple section rhythm. md (17px) is intentionally off the 8px grid —
+        // it mirrors the 17px body type rhythm.
+        md: "17px",
+        section: "80px",
       },
       screens: {
         "2xsmall": "320px",
@@ -57,16 +98,45 @@ module.exports = {
       },
       fontSize: {
         "3xl": "2rem",
+        // Apple type ladder — see docs/design/apple-design.md.
+        // [size, { lineHeight, letterSpacing, fontWeight }]
+        "hero-display": ["56px", { lineHeight: "1.07", letterSpacing: "-0.28px", fontWeight: "600" }],
+        "display-lg": ["40px", { lineHeight: "1.1", letterSpacing: "0px", fontWeight: "600" }],
+        "display-md": ["34px", { lineHeight: "1.18", letterSpacing: "-0.374px", fontWeight: "600" }],
+        lead: ["28px", { lineHeight: "1.14", letterSpacing: "0.196px", fontWeight: "400" }],
+        "lead-airy": ["24px", { lineHeight: "1.5", letterSpacing: "0px", fontWeight: "300" }],
+        tagline: ["21px", { lineHeight: "1.19", letterSpacing: "0.231px", fontWeight: "700" }],
+        "body-strong": ["17px", { lineHeight: "1.24", letterSpacing: "-0.374px", fontWeight: "600" }],
+        "body-apple": ["17px", { lineHeight: "1.47", letterSpacing: "-0.374px", fontWeight: "400" }],
+        "button-pill": ["17px", { lineHeight: "1.0", letterSpacing: "-0.374px", fontWeight: "400" }],
+        "dense-link": ["17px", { lineHeight: "2.41", letterSpacing: "0px", fontWeight: "400" }],
+        "caption-apple": ["14px", { lineHeight: "1.43", letterSpacing: "-0.224px", fontWeight: "400" }],
+        "caption-strong": ["14px", { lineHeight: "1.29", letterSpacing: "-0.224px", fontWeight: "600" }],
+        "button-large": ["18px", { lineHeight: "1.0", letterSpacing: "0px", fontWeight: "300" }],
+        "button-utility": ["14px", { lineHeight: "1.29", letterSpacing: "-0.224px", fontWeight: "400" }],
+        "fine-print": ["12px", { lineHeight: "1.2", letterSpacing: "-0.12px", fontWeight: "400" }],
+        "micro-legal": ["10px", { lineHeight: "1.3", letterSpacing: "-0.08px", fontWeight: "400" }],
+        "nav-link": ["12px", { lineHeight: "1.2", letterSpacing: "-0.12px", fontWeight: "400" }],
       },
       fontFamily: {
         sans: [
-          "Inter",
+          "SF Pro Text",
+          "system-ui",
           "-apple-system",
           "BlinkMacSystemFont",
+          "Inter",
           "Segoe UI",
           "Roboto",
           "Helvetica Neue",
           "Ubuntu",
+          "sans-serif",
+        ],
+        display: [
+          "SF Pro Display",
+          "system-ui",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          "Inter",
           "sans-serif",
         ],
       },

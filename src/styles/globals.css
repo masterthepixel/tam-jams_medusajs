@@ -54,8 +54,55 @@
     @apply max-w-[1440px] w-full mx-auto px-6;
   }
 
-  .contrast-btn {
-    @apply px-4 py-2 border border-black rounded-full hover:bg-black hover:text-white transition-colors duration-200 ease-in;
+  /* =====================================================================
+   * APPLE DESIGN SYSTEM — canonical utility classes (Phase 0 contract)
+   * Source of truth: docs/design/apple-design.md
+   * Conversion plan:  docs/design/apple-conversion-plan.md
+   *
+   * Streams A–G MUST consume these class names. Do not introduce raw hex,
+   * a second accent color, or any shadow other than `shadow-product`.
+   * States: default + :active (scale 0.95) only — never document hover.
+   *
+   * Buttons:  .btn-pill  .btn-pill-ghost  .btn-dark-utility
+   * Tiles:    .tile  .tile--light  .tile--parchment  .tile--dark
+   * Surfaces: bg-apple-* / text-apple-* (see tailwind.config.js)
+   * ===================================================================== */
+
+  .btn-pill {
+    @apply inline-flex items-center justify-center gap-2 bg-apple-blue text-white
+      text-button-pill rounded-pill px-[22px] py-[11px] transition-transform
+      duration-100 active:scale-95;
+  }
+
+  .btn-pill-ghost {
+    @apply inline-flex items-center justify-center gap-2 bg-transparent text-apple-blue
+      text-button-pill rounded-pill border border-apple-blue px-[22px] py-[11px]
+      transition-transform duration-100 active:scale-95;
+  }
+
+  .btn-dark-utility {
+    @apply inline-flex items-center justify-center gap-2 bg-apple-ink text-white
+      text-button-utility rounded-sm px-[15px] py-2 transition-transform
+      duration-100 active:scale-95;
+  }
+
+  /* Full-bleed product tile — the color change IS the section divider. */
+  .tile {
+    @apply w-full rounded-none py-section px-6;
+  }
+  .tile--light {
+    @apply bg-apple-canvas text-apple-ink;
+  }
+  .tile--parchment {
+    @apply bg-apple-parchment text-apple-ink;
+  }
+  .tile--dark {
+    @apply bg-apple-tile1 text-white;
+  }
+
+  /* Frosted floating surfaces (sub-nav, sticky bar). */
+  .frosted {
+    @apply bg-apple-parchment/80 backdrop-blur-xl backdrop-saturate-150;
   }
 
   .text-xsmall-regular {
