@@ -36,11 +36,19 @@ This fork is the `tam-jams_medusajs` storefront with an Apple design system conv
 ### Prerequisites
 
 To use the [Next.js Starter Template](https://medusajs.com/nextjs-commerce/), you should have a Medusa server running locally on port 9000.
-For a quick setup, run:
+This storefront is separate from the Medusa backend, which is expected to run in a different repository (for example `../tam-jams-backend`).
+
+For a quick backend setup, run:
 
 ```shell
 npx create-medusa-app@latest
 ```
+
+Then start the backend before running the storefront.
+
+> The storefront uses `MEDUSA_BACKEND_URL` to connect to the Medusa server. By default it points at `http://localhost:9000`.
+>
+> If the backend includes the admin UI, sign in at `http://localhost:9000/admin`.
 
 Check out [create-medusa-app docs](https://docs.medusajs.com/learn/installation) for more details and troubleshooting.
 
