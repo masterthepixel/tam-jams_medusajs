@@ -14,7 +14,7 @@ const ItemsTemplate = ({ cart }: ItemsTemplateProps) => {
   return (
     <div>
       <div className="pb-3 flex items-center">
-        <Heading className="text-[2rem] leading-[2.75rem]">Cart</Heading>
+        <Heading className="font-display text-display-lg font-semibold text-apple-ink">Cart</Heading>
       </div>
       <Table>
         <Table.Header className="border-t-0">

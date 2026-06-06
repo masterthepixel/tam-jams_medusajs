@@ -142,9 +142,9 @@ function FreeShippingInline({
   }
 }) {
   return (
-    <div className="bg-neutral-100 p-2 rounded-lg border">
+    <div className="bg-apple-parchment border-b border-apple-hairline py-2 px-6">
       <div className="space-y-1.5">
-        <div className="flex justify-between text-xs text-neutral-600">
+          <div className="flex justify-between text-caption-apple text-apple-ink">
           <div>
             {price.target_reached ? (
               <div className="flex items-center gap-1.5">
@@ -162,7 +162,7 @@ function FreeShippingInline({
             })}
           >
             Only{" "}
-            <span className="text-neutral-950">
+            <span className="text-apple-blue font-semibold">
               {convertToLocale({
                 amount: price.target_remaining,
                 currency_code: cart.currency_code,
