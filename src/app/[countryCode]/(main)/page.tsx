@@ -1,7 +1,7 @@
 import { Metadata } from "next"
 
 import FeaturedProducts from "@modules/home/components/featured-products"
-import Hero from "@modules/home/components/hero"
+import Hero, { ProductHeroCarousel } from "@modules/home/components/hero"
 import { listCollections } from "@lib/data/collections"
 import { getRegion } from "@lib/data/regions"
 
@@ -31,6 +31,7 @@ export default async function Home(props: {
   return (
     <>
       <Hero />
+      <ProductHeroCarousel />
       <ul className="flex flex-col">
         <FeaturedProducts collections={collections} region={region} />
       </ul>

@@ -77,7 +77,7 @@ const flavorRingColors: Record<string, string> = {
   Strawberry: "rgba(236, 79, 79, 0.75)",
 }
 
-const Hero = () => {
+const ProductHeroCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isAnimating, setIsAnimating] = useState(false)
   const [touchStartX, setTouchStartX] = useState(0)
@@ -136,18 +136,6 @@ const Hero = () => {
 
   return (
     <section className="hero-carousel relative overflow-hidden text-white pb-20 pt-5 md:pt-6">
-      <video
-        className="hero-bg-video"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="metadata"
-        poster="/videos/tamjamsvieo-poster.jpg"
-      >
-        <source src="/videos/tamjamsvieo-720p.webm" type="video/webm" />
-        <source src="/videos/tamjamsvieo-720p.mp4" type="video/mp4" />
-      </video>
       <h1 className="about-title">OUR JAM</h1>
 
       <div
@@ -510,5 +498,139 @@ const Hero = () => {
     </section>
   )
 }
+
+const Hero = () => {
+  const firstFlavor = flavorCards[0]
+
+  return (
+    <section className="hero-carousel relative overflow-hidden text-white pb-20 pt-5 md:pt-6">
+      <video
+        className="hero-bg-video"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        poster="/videos/tamjamsvieo-poster.jpg"
+      >
+        <source src="/videos/tamjamsvieo-720p.webm" type="video/webm" />
+        <source src="/videos/tamjamsvieo-720p.mp4" type="video/mp4" />
+      </video>
+      <h1 className="about-title">Tam's Jams</h1>
+
+      <div className="member-info">
+        <h2 className="member-name">{firstFlavor.name} Jam</h2>
+        <p className="member-role">{firstFlavor.label}</p>
+        <p className="member-description">{firstFlavor.description}</p>
+      </div>
+
+      <style jsx>{`
+        .hero-carousel {
+          position: relative;
+          min-height: 100vh;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: flex-start;
+          background-color: transparent;
+        }
+
+        .hero-bg-video {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          z-index: 0;
+          opacity: 0.9;
+        }
+
+        .about-title {
+          font-size: 7.5rem;
+          font-weight: 900;
+          text-transform: uppercase;
+          letter-spacing: -0.02em;
+          position: absolute;
+          top: -50px;
+          left: 50%;
+          transform: translateX(-50%);
+          pointer-events: none;
+          white-space: nowrap;
+          font-family: "Arial Black", "Arial Bold", Arial, sans-serif;
+          background: linear-gradient(
+            to bottom,
+            rgba(8, 42, 123, 0.35) 30%,
+            rgba(255, 255, 255, 0) 76%
+          );
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+          z-index: 10;
+        }
+
+        .member-info {
+          text-align: center;
+          position: absolute;
+          top: 240px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: min(280px, 100%);
+          max-width: 280px;
+          margin: 0;
+          padding: 0 16px;
+          transition: all 0.5s ease-out;
+          z-index: 15;
+          word-break: break-word;
+        }
+
+        .member-name {
+          color: #ffffff;
+          font-size: 1.7rem;
+          font-weight: 700;
+          margin-bottom: 10px;
+          position: relative;
+          display: inline-block;
+          line-height: 1.02;
+        }
+
+        .member-role {
+          color: #b5b7c7;
+          font-size: 1rem;
+          font-weight: 500;
+          opacity: 0.8;
+          text-transform: uppercase;
+          letter-spacing: 0.1em;
+          padding: 8px 0;
+          margin-top: -12px;
+          position: relative;
+          line-height: 1.1;
+        }
+
+        .member-description {
+          color: #d2d2ea;
+          font-size: 0.88rem;
+          line-height: 1.3;
+          margin-top: 14px;
+        }
+
+        @media (max-width: 768px) {
+          .about-title {
+            font-size: 4.5rem;
+          }
+
+          .member-name {
+            font-size: 2rem;
+          }
+
+          .member-role {
+            font-size: 1.2rem;
+          }
+        }
+      `}</style>
+    </section>
+  )
+}
+
+export { ProductHeroCarousel }
 
 export default Hero
