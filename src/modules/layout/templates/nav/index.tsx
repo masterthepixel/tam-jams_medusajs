@@ -16,51 +16,65 @@ export default async function Nav() {
   ])
 
   return (
-    <div className="sticky top-0 inset-x-0 z-50 group">
-      <header className="relative h-16 mx-auto border-b duration-200 bg-white border-ui-border-base">
-        <nav className="content-container txt-xsmall-plus text-ui-fg-subtle flex items-center justify-between w-full h-full text-small-regular">
-          <div className="flex-1 basis-0 h-full flex items-center">
-            <div className="h-full">
-              <SideMenu regions={regions} locales={locales} currentLocale={currentLocale} />
-            </div>
-          </div>
-
-          <div className="flex items-center h-full">
-            <LocalizedClientLink
-              href="/"
-              className="txt-compact-xlarge-plus hover:text-ui-fg-base uppercase"
-              data-testid="nav-store-link"
-            >
-              Medusa Store
-            </LocalizedClientLink>
-          </div>
-
-          <div className="flex items-center gap-x-6 h-full flex-1 basis-0 justify-end">
-            <div className="hidden small:flex items-center gap-x-6 h-full">
+    <div className="sticky top-0 inset-x-0 z-50">
+      {/* Global nav — black bar */}
+      <div className="bg-apple-black h-11 px-6 relative flex items-center justify-between">
+        <div className="flex items-center">
+          <SideMenu regions={regions} locales={locales} currentLocale={currentLocale} />
+        </div>
+        <LocalizedClientLink
+          href="/"
+          className="text-white text-nav-link uppercase absolute left-1/2 -translate-x-1/2"
+          data-testid="nav-store-link"
+        >
+          Tam Jams
+        </LocalizedClientLink>
+        <div className="flex items-center gap-x-4">
+          <LocalizedClientLink
+            className="text-white text-nav-link hidden small:block"
+            href="/account"
+            data-testid="nav-account-link"
+          >
+            Account
+          </LocalizedClientLink>
+          <Suspense
+            fallback={
               <LocalizedClientLink
-                className="hover:text-ui-fg-base"
-                href="/account"
-                data-testid="nav-account-link"
+                className="text-white text-nav-link"
+                href="/cart"
+                data-testid="nav-cart-link"
               >
-                Account
+                Cart (0)
               </LocalizedClientLink>
-            </div>
-            <Suspense
-              fallback={
-                <LocalizedClientLink
-                  className="hover:text-ui-fg-base flex gap-2"
-                  href="/cart"
-                  data-testid="nav-cart-link"
-                >
-                  Cart (0)
-                </LocalizedClientLink>
-              }
-            >
-              <CartButton />
-            </Suspense>
-          </div>
+            }
+          >
+            <CartButton />
+          </Suspense>
+        </div>
+      </div>
+      {/* Sub-nav — frosted bar */}
+      <div className="frosted sticky top-11 inset-x-0 z-40 h-[52px] px-6 flex items-center justify-between border-b border-apple-hairline">
+        <span className="font-display text-tagline font-bold text-apple-ink">
+          Tam Jams
+        </span>
+        <nav className="flex items-center gap-x-6">
+          <LocalizedClientLink
+            href="/store"
+            className="text-button-utility text-apple-ink"
+          >
+            Shop All
+          </LocalizedClientLink>
+          <LocalizedClientLink
+            href="/account"
+            className="text-button-utility text-apple-ink"
+          >
+            Account
+          </LocalizedClientLink>
+          <LocalizedClientLink href="/cart" className="btn-pill">
+            Shop
+          </LocalizedClientLink>
         </nav>
-      </header>
+      </div>
     </div>
   )
 }

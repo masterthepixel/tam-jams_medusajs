@@ -113,7 +113,7 @@ const LanguageSelect = ({
   }
 
   return (
-    <div>
+    <div className="text-apple-ink text-button-utility">
       <Listbox
         as="span"
         onChange={handleChange}
