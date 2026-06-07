@@ -23,6 +23,9 @@
 .DS_Store
 *.pem
 
+# large original video files
+/public/videos/tamjamsvieo.mp4
+
 # debug
 npm-debug.log*
 yarn-debug.log*
